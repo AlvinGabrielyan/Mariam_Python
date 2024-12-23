@@ -1,30 +1,34 @@
 def encrypt(plaintext, key):
+    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     ciphertext = ""
-    plaintext = plaintext.upper() #Cankacac mutqagrvac tar sarquma mecatar vorovhetev xndiry mecatareri heta ashxarum
-    key = key % 26
+    plaintext = plaintext.upper()  
 
     for ch in plaintext:
         if ch.isalpha():  
-            base = ord('A') #Mutqagrvac symboly convert a anum ASCII kodi(ira tvayin arjeqin)
-            ch = chr((ord(ch) - base + key) % 26 + base) # tary hamapatasxan key-ov texasharjelu banadzevna
-        ciphertext += ch
+            index = alphabet.index(ch) 
+            new_index = (index + key) % 26  
+            ciphertext += alphabet[new_index]
+        else:
+            ciphertext += ch  
 
     return ciphertext
 
 def decrypt(ciphertext, key):
+    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     plaintext = ""
     ciphertext = ciphertext.upper() 
-    key = key % 26
 
     for ch in ciphertext:
-        if ch.isalpha():  
-            base = ord('A')
-            ch = chr((ord(ch) - base - key + 26) % 26 + base)
-        plaintext += ch
+        if ch.isalpha(): 
+            index = alphabet.index(ch)
+            new_index = (index - key + 26) % 26  
+            plaintext += alphabet[new_index]
+        else:
+            plaintext += ch 
 
     return plaintext
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     plaintext = input("Enter plaintext (uppercase only): ").upper()
     key = int(input("Enter key (0-25): "))
 
