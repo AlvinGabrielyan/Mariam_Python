@@ -28,12 +28,11 @@ def decrypt(ciphertext, key):
 
     return plaintext
 
-if __name__ == "__main__":
-    plaintext = input("Enter plaintext (uppercase only): ").upper()
-    key = int(input("Enter key (0-25): "))
+plaintext = input("Enter plaintext (uppercase only): ").upper()
+key = int(input("Enter key (0-25): "))
 
-    encrypted = encrypt(plaintext, key)
-    print(encrypted)
+encrypted = encrypt(plaintext, key)
+print(encrypted)
 
-    decrypted = decrypt(encrypted, key)
-    print(decrypted)
+decrypted = decrypt(encrypted, key)
+print(decrypted)
